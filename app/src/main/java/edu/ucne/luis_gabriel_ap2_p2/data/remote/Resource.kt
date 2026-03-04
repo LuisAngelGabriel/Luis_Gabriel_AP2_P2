@@ -1,5 +1,4 @@
 package edu.ucne.luis_gabriel_ap2_p2.data.remote
-
 sealed class Resource <T>(
     val data: T? = null,
     val message: String? = null
