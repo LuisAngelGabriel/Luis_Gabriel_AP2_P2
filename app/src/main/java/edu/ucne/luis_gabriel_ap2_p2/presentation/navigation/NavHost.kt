@@ -1,10 +1,11 @@
 package edu.ucne.luis_gabriel_ap2_p2.presentation.navigation
+
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import edu.ucne.luis_gabriel_ap2_p2.presentation.list.ListBorrameScreen
-import edu.ucne.luis_gabriel_ap2_p2.presentation.detail.DetailBorrameScreen
+import edu.ucne.luis_gabriel_ap2_p2.presentation.detail.DetailJugadorScreen
+import edu.ucne.luis_gabriel_ap2_p2.presentation.jugador_list.ListJugadorScreen
 
 @Composable
 fun NavHost(
@@ -12,19 +13,22 @@ fun NavHost(
 ) {
     NavHost(
         navController = navHostController,
-        startDestination = Screen.ListBorrame
+        startDestination = Screen.ListJugador
     ) {
-        composable<Screen.ListBorrame> {
-            ListBorrameScreen(
-                onNavigateToDetail = {
-                    navHostController.navigate(Screen.DetailBorrame(id = 0))
+        composable<Screen.ListJugador> {
+            ListJugadorScreen(
+                onAddJugador = {
+                    navHostController.navigate(Screen.DetailJugador(id = 0))
+                },
+                onEditJugador = { id ->
+                    navHostController.navigate(Screen.DetailJugador(id = id))
                 }
             )
         }
 
-        composable<Screen.DetailBorrame> {
-            DetailBorrameScreen(
-                onBack = {
+        composable<Screen.DetailJugador> {
+            DetailJugadorScreen(
+                onNavigateBack = {
                     navHostController.navigateUp()
                 }
             )
